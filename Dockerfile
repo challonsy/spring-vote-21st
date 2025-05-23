@@ -12,7 +12,7 @@ RUN ./gradlew dependencies --no-daemon
 
 COPY . .
 
-RUN ./gradlew clean build -x test --no-daemon
+RUN chmod +x ./gradlew clean build -x test --no-daemon
 
 # run stage
 FROM amazoncorretto:17
