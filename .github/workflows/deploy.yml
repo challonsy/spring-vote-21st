@@ -62,8 +62,8 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > private_key.pem
           chmod 600 private_key.pem
           ssh -i private_key.pem -o StrictHostKeyChecking=no ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} "
-              sudo docker rm -f vote || true
-              sudo docker rm -f redis || true
+              sudo docker ps -a -q -f name=vote | grep -q . && docker rm -f vote
+              sudo docker ps -a -q -f name=redis | grep -q . && docker rm -f redis
               cd /home/ubuntu
               sudo docker compose down --remove-orphans
               sudo docker compose pull
