@@ -46,4 +46,5 @@ Example)
 
 - 개인 레포지토리로 전체 레포의 Develop 브랜치에서 Fork 하기
 - 각자 작업 진행 후 Pull Request 올리기 (절대 직접 커밋 x)
-- Pull Request 제목: `#[issue번호] 동작: 이슈 이름`
+- Pull Request 제목: `동작: 이슈 이름`
+- - 1명 이상 팀원의 승인이 있으면 Push 가능하도록 룰 설정
