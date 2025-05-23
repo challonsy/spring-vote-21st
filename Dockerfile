@@ -1,5 +1,5 @@
 # build stage
-FROM amazoncorretto:21 AS Builder
+FROM amazoncorretto:17 AS Builder
 
 WORKDIR /app
 
@@ -8,11 +8,11 @@ COPY gradle /app/gradle
 
 RUN chmod +x gradlew
 
-RUN chmod +x ./gradlew dependencies --no-daemon
+RUN ./gradlew dependencies --no-daemon
 
 COPY . .
 
-RUN chmod +x ./gradlew clean build -x test --no-daemon
+RUN ./gradlew clean build -x test --no-daemon
 
 # run stage
 FROM amazoncorretto:17
