@@ -8,7 +8,7 @@ COPY gradle /app/gradle
 
 RUN chmod +x gradlew
 
-RUN ./gradlew dependencies --no-daemon
+RUN chmod +x ./gradlew dependencies --no-daemon
 
 COPY . .
 
