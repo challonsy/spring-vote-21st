@@ -1,6 +1,10 @@
 # build stage
 FROM amazoncorretto:17 AS Builder
 
+ENV JWT_SECRET=dummy
+ENV RDS_USERNAME=dummy
+ENV RDS_PASSWORD=dummy
+
 WORKDIR /app
 
 COPY gradlew build.gradle settings.gradle /app/
