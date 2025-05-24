@@ -15,4 +15,34 @@ public class UserResponseDto {
         @Schema(description = "유저 id", example = "1")
         private Long id;
     }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class SignInResultDto {
+        @Schema(description = "유저 id", example = "1")
+        private Long id;
+
+        @Schema(description = "엑세스 토큰", example = "fsfdfsfsdfdsfsfs")
+        private String accessToken;
+
+        @Schema(description = "리프레시 토큰", example = "dsfsfsfsfsfsfsfsf")
+        private String refreshToken;
+    }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReissueResultDto {
+        @Schema(description = "유저 id", example = "1")
+        private Long id;
+
+        @Schema(description = "엑세스 토큰", example = "fsfdfsfsdfdsfsfs")
+        private String accessToken;
+
+        @Schema(description = "리프레시 토큰", example = "dsfsfsfsfsfsfsfsf")
+        private String refreshToken;
+    }
 }

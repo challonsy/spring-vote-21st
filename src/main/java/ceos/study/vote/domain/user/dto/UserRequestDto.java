@@ -47,4 +47,14 @@ public class UserRequestDto {
         @Schema(description = "비밀번호", example = "12345678")
         private String password;
     }
+
+    @Getter
+    @Builder
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class ReissueRequestDto {
+        @NotEmpty
+        @Schema(description = "리프레시 토큰", example = "dssdsdfssfsfdfs")
+        private String refreshToken;
+    }
 }
