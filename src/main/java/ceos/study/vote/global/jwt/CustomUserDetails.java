@@ -16,8 +16,14 @@ import java.util.Collection;
 public class CustomUserDetails implements UserDetails {
     private final User user;
 
-    public User getUser() {
-        return user;
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(user.getRoleType().getAuthority());
+        Collection<GrantedAuthority> authorities = new ArrayList<>();
+
+        authorities.add(simpleGrantedAuthority);
+
+        return authorities;
     }
 
     @Override
@@ -25,36 +31,4 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getUsername() { return user.getName(); }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        RoleType role = user.getRoleType();
-        String authority = role.getAuthority();
-
-        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority(authority);
-        Collection<GrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(simpleGrantedAuthority);
-
-        return authorities;
-    }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked() {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired() {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled() {
-        return true;
-    }
 }

@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .formLogin((auth) -> auth.disable())
                 .sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/","/sign-in", "/sign-up"
+                        .requestMatchers("/","users/sign-in", "users/sign-up"
                                 ,"/user/**"
                                 ,"/swagger-ui/**"
                                 ,"/swagger-resources/**"
