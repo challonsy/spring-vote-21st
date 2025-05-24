@@ -24,6 +24,9 @@ public class UserResponseDto {
         @Schema(description = "유저 id", example = "1")
         private Long id;
 
+        @Schema(description = "유저 이름", example = "나야나")
+        private String name;
+
         @Schema(description = "엑세스 토큰", example = "fsfdfsfsdfdsfsfs")
         private String accessToken;
 

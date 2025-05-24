@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
         // Redis에 refresh token 저장
         redisService.setValue(existingUser.getEmail(), refreshToken, 1000 * REFRESH_TOKEN_VALIDITY_SECONDS); // Timeout이 밀리초라 1000 곱하슈
 
-        return new TokenProvider.TokenPair(existingUser.getId(), accessToken, refreshToken);
+        return new TokenProvider.TokenPair(existingUser, accessToken, refreshToken);
     }
 
     @Override

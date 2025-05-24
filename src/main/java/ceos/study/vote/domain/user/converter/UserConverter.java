@@ -27,7 +27,8 @@ public class UserConverter {
 
     public static UserResponseDto.SignInResultDto toSignInResultDto(TokenProvider.TokenPair tokenPair) {
         return UserResponseDto.SignInResultDto.builder()
-                .id(tokenPair.Id())
+                .id(tokenPair.user().getId())
+                .name(tokenPair.user().getName())
                 .accessToken(tokenPair.accessToken())
                 .refreshToken(tokenPair.refreshToken())
                 .build();
@@ -35,7 +36,7 @@ public class UserConverter {
 
     public static UserResponseDto.ReissueResultDto toReissueResultDto(TokenProvider.TokenPair tokenPair) {
         return UserResponseDto.ReissueResultDto.builder()
-                .id(tokenPair.Id())
+                .id(tokenPair.user().getId())
                 .accessToken(tokenPair.accessToken())
                 .refreshToken(tokenPair.refreshToken())
                 .build();

@@ -131,8 +131,8 @@ public class TokenProvider implements InitializingBean {
             refreshToken = createRefreshToken(user.getEmail());
         }
 
-        return new TokenPair(user.getId(), accessToken, refreshToken);
+        return new TokenPair(user, accessToken, refreshToken);
     }
 
-    public record TokenPair(Long Id, String accessToken, String refreshToken) {}
+    public record TokenPair(User user, String accessToken, String refreshToken) {}
 }
