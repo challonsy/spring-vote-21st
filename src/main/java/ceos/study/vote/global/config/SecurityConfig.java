@@ -24,26 +24,6 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration corsConfig = new CorsConfiguration();
-
-        // 허용할 Origin
-        corsConfig.addAllowedOrigin("http://localhost:5173");
-
-        // 요청 메서드, 헤더
-        corsConfig.addAllowedMethod("*");
-        corsConfig.addAllowedHeader("*");
-
-        // 인증정보 허용 (쿠키, Authorization 헤더 등)
-        corsConfig.setAllowCredentials(true);
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", corsConfig);
-
-        return source;
-    }
-
-    @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
@@ -51,7 +31,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors(cors-> cors.configurationSource(corsConfigurationSource()))
+                .cors(cors-> cors.configurationSource(CorsConfig.corsConfigurationSource()))
                 .csrf(CsrfConfigurer::disable)
                 .formLogin((auth) -> auth.disable())
                 .sessionManagement(configurer -> configurer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
