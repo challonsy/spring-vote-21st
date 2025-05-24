@@ -13,7 +13,7 @@ public class CorsConfig {
         CorsConfiguration corsConfig = new CorsConfiguration();
 
         // 허용할 Origin
-        corsConfig.addAllowedOriginPattern("http://localhost:5173");
+        corsConfig.addAllowedOrigin("http://localhost:5173");
 
         // 요청 메서드, 헤더
         corsConfig.addAllowedMethod("*");
